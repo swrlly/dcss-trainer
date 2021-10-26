@@ -1,0 +1,5 @@
+﻿  dcsstrainer.cpp
+D:\hacking\practice\dcss trainer\noemaildcsstrainer\dcss-trainer1\dcsstrainer\dcsstrainer.cpp(72,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  process.cpp
+  Generating Code...
+  dcsstrainer.vcxproj -> D:\hacking\practice\dcss trainer\noemaildcsstrainer\dcss-trainer1\x64\Debug\dcsstrainer.exe

@@ -1,0 +1,8 @@
+﻿  dcsstrainer.cpp
+D:\hacking\practice\dcss trainer\noemaildcsstrainer\dcss-trainer1\dcsstrainer\dcsstrainer.cpp(72,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  process.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 6 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  dcsstrainer.vcxproj -> D:\hacking\practice\dcss trainer\noemaildcsstrainer\dcss-trainer1\Release\dcsstrainer.exe

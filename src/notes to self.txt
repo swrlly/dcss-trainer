@@ -1,0 +1,82 @@
+## winform stuff
+
+to convert from command line tool to windows forms:
+- linker -> system -> subsystem windows
+- config properties -> advanced
+   - CLR support - enable
+   - .NET Target Framework Version - v4.7.2
+   - Enable managed... Yes
+
+- right click -> Add -> UI -> Windows Form
+- Redefine your main to be similar to windows form main
+- Make sure entry point is defined correctly
+- Add AssemblyInfo
+
+
+
+## notes
+
+### general stuff
+- casts come before addition
+- item ID is 2 byte value, 100 means empty
+ - first byte is something
+ - second represent something else
+
+- for environment items, flags comes before (x, y)
+- for inventory, flags also comes before (x, y) but is -1, -1
+
+items
+- kept track of either in the env or inventory
+- there is one item in the player struct but it's also the first item in the inventory ???? wdf
+- seems like items are generated once you enter. possible autoid hack
+- if you have n items in your inventory, there are n+1 contiguous blocks of memory ready to recieve the inventory items
+- there is no deallocation if you drop items
+- thus you must look for reliable inventory slot id, which is always +1 from the last if the spot has been allocated before
+   - technically you don't need to, the env items seem to be laid out right after the inventory ones
+   - ID all env ones so items will stack properly
+
+primary id's
+potion: 7
+scrolls: 5
+
+05 10 is acquirement
+0A 00 is orb of zot lmfao
+
+
+
+### entities
+- they're 0x138 or 312 apart
+172 from the 4 byte -1 on the right
+- cannot just set hp to 0, they need to clean up pointers for items held and stuff
+- can easily stasis monsters
+
+seems like in memory:
+- environment items
+- environment entities
+
+
+
+
+
+crawl-tiles.exe+23D40
+looks to be updateXandY function
+- it is the global update x and y, affects player too
+
+given an empty "enemy" in the environment, you can force an enemy to spawn by setting x, y, health, maxhealth, speed and the 27001 thing
+
+
+
+address crawl-tiles.exe + BE1C20 stores a bunch of item dealing offsets:
+for example, scroll is crawl-tiles.exe + 5E2E55 + BE1C20
+
+### Possible incoming features
++ acquirement on command; opengl calls are failing tho
++ turn trainer on and off
++ Tile-based kill aura
++ Click to blink? (seems like a good fcn hook lesson)
++ No negative status effects
++ Remove negative mutations
++ Unlock all spells
++ uncurse/curse all items (for Ashenzari)
++ Account for race aptitudes in skill levels
++ See if you can hook Shaft Self
